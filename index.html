@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Taschenrechner</title>
+    <link rel="stylesheet" href="css/main.css">
+<script>
+    function operationAnwenden(operation) {
+        document.getElementById("ergebnisAnzeige").innerHTML += operation;
+    }
+    //Funktion zur Eingabe der Zahlen, bzw. Rechenoperationen
+    function berechneErgebnis(){
+        let container = document.getElementById('ergebnisAnzeige');
+        container.innerHTML = eval(container.innerHTML);
+    }
+    //Funktion um das Ergebnis zu berechnen und im Container ("ergebnisAnzeige") auszugeben
+    function loeschen(){
+        let container = document.getElementById('ergebnisAnzeige');
+        if(container.innerHTML.endsWith(' ')){
+            container.innerHTML = container.innerHTML.slice(0,-3);
+        }else{
+            container.innerHTML = container.innerHTML.slice(0,-1)
+        }
+        //Löscht das zuletzt Geschriebene. If Funktion um die Leerzeichen bei den Operatoren mit zu löschen und else für die ganz noramlen Zahlen
+    }
+    function allesLoeschen(){
+        while(document.getElementById('ergebnisAnzeige').innerHTML !== ""){
+            loeschen();
+        }
+    }
+    //Löschen einer einzelnen Stelle, solange der container nicht leer ist
+</script>
+
+</head>
+<body>
+
+<table class='ÜberschriftTable'>
+    <tr>
+        <td></td>
+        <td> <p> Dein persönlicher Taschenrechner</p></td>
+        <td id="logo"><img alt="Gottfried-Wilhelm-Leibniz-Gymnasium-Schullogo" src="images/Logo .jpg" height="150"></td>
+    </tr>
+</table>
+<br>
+<br>
+<div id="ergebnisAnzeige">
+
+</div>
+
+<table class='Operationtable'>
+    <tr>
+        <td onclick="allesLoeschen()">AC</td>
+        <td onclick="operationAnwenden('(')">(</td>
+        <td onclick="operationAnwenden(')')">)</td>
+        <td onclick="loeschen()">DEL</td>
+    </tr>
+    <tr>
+     <td onclick="operationAnwenden(7)">7</td>
+     <td onclick="operationAnwenden(8)">8</td>
+     <td onclick="operationAnwenden(9)">9</td>
+     <td onclick="operationAnwenden(' / ')" class="rechenOperationen">/</td>
+    </tr>
+    <tr>
+        <td onclick="operationAnwenden(4)">4</td>
+        <td onclick="operationAnwenden(5)">5</td>
+        <td onclick="operationAnwenden(6)">6</td>
+        <td onclick="operationAnwenden(' * ')" class="rechenOperationen">x</td>
+    </tr>
+
+    <tr>
+        <td onclick="operationAnwenden(1)">1</td>
+        <td onclick="operationAnwenden(2)">2</td>
+        <td onclick="operationAnwenden(3)">3</td>
+        <td onclick="operationAnwenden(' + ')" class="rechenOperationen">+</td>
+    </tr>
+
+    <tr>
+        <td onclick="operationAnwenden(0)">0</td>
+        <td onclick="operationAnwenden(' . ')">.</td>
+        <td onclick="berechneErgebnis()" id="ergebnis">=</td>
+        <td onclick="operationAnwenden(' - ')" class="rechenOperationen">-</td>
+    </tr>
+
+</table>
+<br>
+<br>
+<div id="pfeil">
+    <img alt="Pfeil" src="images/Pfeil.jpg">
+</div>
+<div id="link">
+<a href="https://www.youtube.com/c/DorFuchs">Für coole Songs und interessante Fakten zur Mathematik klicken Sie hier!</a>
+</div>
+<br>
+
+</body>
+</html>
